@@ -1,0 +1,5 @@
+# BTSE SDK - install from PyPI or GitHub
+btse-sdk>=0.1.0
+
+# Or install from local development:
+# pip install -e ../btse-sdk
