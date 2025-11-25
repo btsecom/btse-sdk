@@ -7,6 +7,11 @@ from typing import Any, Dict, Optional
 
 import requests
 
+try:
+    from ._version import __version__
+except ImportError:
+    __version__ = "unknown"
+
 
 class BTSEAPIError(Exception):
     """Raised for non-2xx responses from BTSE API."""
@@ -120,18 +125,22 @@ class BTSEClientBase:
         path = f"{self.api_prefix}{endpoint}"  # e.g. "/api/v3.3/price"
         url = f"{self.base_url}{path}"
 
-        headers: Dict[str, str] = {}
+        headers: Dict[str, str] = {
+            "User-Agent": f"btse-sdk-python/{__version__}"
+        }
         json_body = None
         body_bytes = None
 
         if auth:
             # Include query params in signature for DELETE requests only
-            headers, body_str = self._auth_headers(
+            auth_headers, body_str = self._auth_headers(
                 path=path,
                 body=data,
                 query_params=params,
                 method=method
             )
+            # Merge auth headers with User-Agent
+            headers.update(auth_headers)
             # IMPORTANT: Send the exact body_str that was signed!
             # Don't let requests re-serialize it with different settings
             body_bytes = body_str.encode('utf-8') if body_str else None

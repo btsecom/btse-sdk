@@ -1,5 +1,7 @@
 # btse_sdk/__init__.py
 
+from ._version import __version__
+
 from .spot import BTSESpotClient
 from .futures import BTSEFuturesClient
 
@@ -11,4 +13,5 @@ __all__ = [
     "OrderSide",
     "OrderType",
     "TimeInForce",
+    "__version__",
 ]

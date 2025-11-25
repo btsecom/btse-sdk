@@ -15,9 +15,6 @@ A Python SDK for BTSE Spot and Futures trading APIs with WebSocket support.
 ## Installation
 
 ```bash
-# Install from PyPI (when published)
-pip install btse-sdk
-
 # Install from source
 git clone https://github.com/btsecom/btse-sdk.git
 cd btse-sdk

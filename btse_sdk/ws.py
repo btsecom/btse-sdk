@@ -10,6 +10,11 @@ from typing import Callable, Iterable, Optional, Dict, Any, List
 
 import websocket  # pip install websocket-client
 
+try:
+    from ._version import __version__
+except ImportError:
+    __version__ = "unknown"
+
 MessageHandler = Callable[[dict], None]
 ErrorHandler = Callable[[Exception], None]
 
@@ -137,12 +142,16 @@ class BTSEWebSocketBase:
         """
         Start the websocket in a background thread.
         """
+        headers = {
+            "User-Agent": f"btse-sdk-python/{__version__}"
+        }
         self._ws = websocket.WebSocketApp(
             self.url,
             on_message=self._on_message,
             on_error=self._on_error,
             on_close=self._on_close,
             on_open=self._on_open,
+            header=headers,
         )
         self._thread = threading.Thread(target=self._ws.run_forever, daemon=True)
         self._thread.start()
