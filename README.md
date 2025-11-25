@@ -177,8 +177,6 @@ For comprehensive examples and usage patterns, see the [btse-sdk-examples](https
 
 BTSE uses HMAC-SHA384 for request signing. The SDK handles all authentication automatically.
 
-For detailed authentication documentation, see [AUTHENTICATION.md](AUTHENTICATION.md).
-
 ### Quick Authentication Test
 
 ```python
@@ -290,7 +288,7 @@ See [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Examples**: See [btse-sdk-examples](https://github.com/yourname/btse-sdk-examples)
+- **Examples**: See [btse-sdk-examples](https://github.com/btsecom/btse-sdk/tree/main/examples)
 - **Issues**: Open an issue on GitHub
 - **Documentation**: Check the API reference links above
 - **BTSE Support**: [support@btse.com](mailto:support@btse.com)
